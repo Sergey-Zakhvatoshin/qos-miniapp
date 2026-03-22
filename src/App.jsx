@@ -11,21 +11,16 @@ function App() {
     tg.ready();
     tg.expand();
 
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-      if (hash === 'price-list') {
-        setCurrentPage('price-list');
-      } else {
-        setCurrentPage('map');
+    const getPageFromUrl = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const page = urlParams.get('page');
+      if (page === 'price-list') {
+        return 'price-list';
       }
+      return 'map';
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
+    setCurrentPage(getPageFromUrl());
   }, []);
 
   return (
