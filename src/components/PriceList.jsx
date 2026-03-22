@@ -99,6 +99,29 @@ function PriceList() {
     const tg = window.Telegram.WebApp;
     tg.ready();
     tg.expand();
+
+    // Устанавливаем цвета вручную на случай, если CSS переменные не работают
+    document.body.style.backgroundColor = tg.themeParams.bg_color || '#ffffff';
+    document.documentElement.style.setProperty(
+      '--tg-text-color',
+      tg.themeParams.text_color || '#000000',
+    );
+    document.documentElement.style.setProperty(
+      '--tg-hint-color',
+      tg.themeParams.hint_color || '#999999',
+    );
+    document.documentElement.style.setProperty(
+      '--tg-button-color',
+      tg.themeParams.button_color || '#3390ec',
+    );
+    document.documentElement.style.setProperty(
+      '--tg-button-text-color',
+      tg.themeParams.button_text_color || '#ffffff',
+    );
+    document.documentElement.style.setProperty(
+      '--tg-secondary-bg-color',
+      tg.themeParams.secondary_bg_color || '#f0f0f0',
+    );
   }, []);
 
   return (
@@ -106,11 +129,18 @@ function PriceList() {
       <h1 className="price-list__title">Our Price List</h1>
 
       {Object.entries(priceData).map(([category, data]) => (
-        <section key={category} className="price-list__category" id={category}>
+        <section
+          key={category}
+          className="price-list__category"
+          id={category}
+        >
           <h2 className="price-list__category-title">{data.title}</h2>
           <div className="price-list__items">
             {data.items.map((item, index) => (
-              <div key={index} className="price-list__item">
+              <div
+                key={index}
+                className="price-list__item"
+              >
                 <div className="price-list__item-header">
                   <h3 className="price-list__item-name">{item.name}</h3>
                   <span className="price-list__item-price">{item.price}</span>
