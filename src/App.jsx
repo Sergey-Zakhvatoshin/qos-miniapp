@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import PriceList from './components/PriceList';
+import Reviews from './components/Reviews';
 import directionsImg from './assets/images/directions.webp';
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       if (page === 'price-list') {
         return 'price-list';
       }
+      if (page === 'reviews') {
+        return 'reviews';
+      }
       return 'map';
     };
 
@@ -27,6 +31,8 @@ function App() {
     <div className="app">
       {currentPage === 'price-list' ? (
         <PriceList />
+      ) : currentPage === 'reviews' ? (
+        <Reviews />
       ) : (
         <img
           src={directionsImg}
