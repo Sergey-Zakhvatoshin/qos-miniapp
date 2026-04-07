@@ -1,18 +1,39 @@
-# Dependencies
-node_modules
-
-# Build output
-dist
-
-# Environment
+# Environment variables
 .env
 .env.local
+.env.production
 
-# Editor
-.vscode
-.idea
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+build/
+*.whl
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Database (contains production data)
+*.db
+*.sqlite
+*.sqlite3
+
+# Node / Mini App
+miniapp/node_modules/
+miniapp/dist/
+miniapp/.vite/
+
+# IDE
+.vscode/
+.idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
@@ -20,10 +41,3 @@ Thumbs.db
 
 # Logs
 *.log
-npm-debug.log*
-
-# Testing
-coverage
-
-# Git
-.gitattributes
