@@ -4,7 +4,23 @@ import manicureImg from '../assets/images/manicure.webp';
 import pedicureImg from '../assets/images/pedicure.webp';
 import eyelashImg from '../assets/images/eyelash.webp';
 
-const priceData = {
+interface PriceItem {
+  name: string;
+  description: string;
+  price: string;
+}
+
+interface CategoryData {
+  title: string;
+  image: string;
+  items: PriceItem[];
+}
+
+interface PriceData {
+  [key: string]: CategoryData;
+}
+
+const priceData: PriceData = {
   manicure: {
     title: 'Manicure Services',
     image: manicureImg,
@@ -102,11 +118,10 @@ const priceData = {
 
 function PriceList() {
   useEffect(() => {
-    const tg = window.Telegram.WebApp;
+    const tg = window.Telegram!.WebApp;
     tg.ready();
     tg.expand();
 
-    // Set colors manually in case CSS variables don't work
     document.body.style.backgroundColor = tg.themeParams.bg_color || '#ffffff';
     document.documentElement.style.setProperty(
       '--tg-text-color',

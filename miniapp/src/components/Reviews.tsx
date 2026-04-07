@@ -1,7 +1,19 @@
 import { useEffect } from 'react';
 import './Reviews.css';
 
-const reviewsData = [
+interface Review {
+  id: number;
+  service: string;
+  rating: number;
+  name: string;
+  text: string;
+}
+
+interface StarRatingProps {
+  rating: number;
+}
+
+const reviewsData: Review[] = [
   {
     id: 1,
     service: 'Classic Manicure',
@@ -60,7 +72,7 @@ const reviewsData = [
   },
 ];
 
-function StarRating({ rating }) {
+function StarRating({ rating }: StarRatingProps) {
   return (
     <div className="rating">
       {[1, 2, 3, 4, 5].map((star) => (
@@ -77,7 +89,7 @@ function StarRating({ rating }) {
 
 function Reviews() {
   useEffect(() => {
-    const tg = window.Telegram.WebApp;
+    const tg = window.Telegram!.WebApp;
     tg.ready();
     tg.expand();
 
